@@ -1,0 +1,13 @@
+# Personal
+.vscode
+
+# Mac
+.DS_Store
+
+# Others
+node_modules
+dist
+/config/secrets.js
+
+
+
