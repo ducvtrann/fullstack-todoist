@@ -1,7 +1,7 @@
 {
-  "name": "pern-boiler",
+  "name": "todoist",
   "version": "1.0.0",
-  "description": "A PERN boilerplate for fast development",
+  "description": "The popular task manager application",
   "main": "index.js",
   "scripts": {
     "build-client": "NODE_ENV='production' webpack",
