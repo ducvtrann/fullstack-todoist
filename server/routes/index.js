@@ -1,11 +1,10 @@
 const TodoController = require('../controllers').Todo;
 
 module.exports = (app) => {
-  app.get('/api', (req, res) =>
-    res.status(200).send({
-      message: 'Welcome to the Todos API!',
-    })
-  );
-
-  app.post('/api/todo', TodoController.create);
+  // TODO
+  app.get('/api/todos', TodoController.index);
+  app.get('/api/todos/:todoId', TodoController.show);
+  app.post('/api/todos', TodoController.create);
+  app.put('/api/todos/:todoId', TodoController.update);
+  app.delete('/api/todos/:todoId', TodoController.destroy);
 };
