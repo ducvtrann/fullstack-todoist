@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const htmlPlugin = new HtmlWebpackPlugin({
+  favicon: './public/favicon.ico',
   template: './public/index.html',
   filename: './index.html',
 });
