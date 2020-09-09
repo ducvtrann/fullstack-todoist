@@ -7,7 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const DIST_DIR = path.join(__dirname, '../dist');
 
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV === 'production') {
   require('../config/secrets');
 }
 
@@ -18,6 +18,9 @@ const createApp = () => {
   // body parsing middleware
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
+
+  // Main route
+  require('./routes')(app);
 
   // static file-serving middleware
   app.use(express.static(DIST_DIR));
