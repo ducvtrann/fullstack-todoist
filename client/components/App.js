@@ -1,8 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { hot } from 'react-hot-loader';
+import { Header } from './layout/Header';
+import { Content } from './layout/Content';
 
-const App = () => {
-  return <div>Hello World</div>;
-};
+const App = () => (
+  <div className="App">
+    <Header />
+    <Content />
+  </div>
+);
 
 export default hot(module)(App);
