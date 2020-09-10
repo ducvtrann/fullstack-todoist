@@ -1,6 +1,8 @@
 import React from 'react';
 import Logo from '../../assets/images/logo.png';
+import './Header.css';
 import { FaPizzaSlice } from 'react-icons/fa';
+import { MdAddBox } from 'react-icons/md';
 
 export const Header = () => {
   return (
@@ -10,12 +12,12 @@ export const Header = () => {
           <img src={Logo} alt="Todoist" />
         </div>
         <div className="settings">
-          <ul>
-            <li>+</li>
-            <li>
-              <FaPizzaSlice />
-            </li>
-          </ul>
+          <a>
+            <MdAddBox />
+          </a>
+          <a>
+            <FaPizzaSlice />
+          </a>
         </div>
       </nav>
     </header>

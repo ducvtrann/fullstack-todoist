@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 import { hot } from 'react-hot-loader';
 import { Header } from './layout/Header';
 import { Content } from './layout/Content';

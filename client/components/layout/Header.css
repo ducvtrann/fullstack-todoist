@@ -1,0 +1,40 @@
+.header {
+  border-bottom: solid 1px #ca2100;
+  background-color: #db4c3f;
+  height: 4rem;
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 57.62rem;
+  margin: auto;
+  height: 4rem;
+}
+
+.logo {
+  display: flex;
+
+  align-items: center;
+}
+
+.settings {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div > a {
+  margin-left: 2rem;
+  color: white;
+}
+
+a > svg {
+  height: 2rem;
+  width: 2rem;
+}
