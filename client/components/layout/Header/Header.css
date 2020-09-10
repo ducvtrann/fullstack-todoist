@@ -2,7 +2,7 @@
   border-bottom: solid 1px #ca2100;
   background-color: #db4c3f;
   height: 4rem;
-  z-index: 100;
+  z-index: 1001;
   position: fixed;
   top: 0;
   width: 100%;
@@ -12,14 +12,14 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 57.62rem;
+  max-width: 55%;
   margin: auto;
   height: 4rem;
 }
 
 .logo {
   display: flex;
-
+  justify-content: center;
   align-items: center;
 }
 
@@ -29,7 +29,7 @@ nav {
   align-items: center;
 }
 
-div > a {
+.header-icon {
   margin-left: 2rem;
   color: white;
 }
