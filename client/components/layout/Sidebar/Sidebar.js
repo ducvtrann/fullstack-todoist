@@ -32,12 +32,12 @@ export const Sidebar = () => {
             </a>
           </li>
         </ul>
-        <div className="project">
+        <div className="sidebar-project">
           <a className="nav-link">
             <FaChevronDown className="nav-link-icon" />
             Projects
           </a>
-          <a className="add-project">+</a>
+          <a>+</a>
         </div>
       </div>
     </div>
