@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './App.css';
 import { hot } from 'react-hot-loader';
 import { Header } from './layout/Header/Header';
@@ -8,6 +9,11 @@ import { Sidebar } from './layout/Sidebar/Sidebar';
 const App = () => {
   const [activeFilterContent, setActiveFilterContent] = useState('Inbox');
   const [tasks, setTasks] = useState([]);
+
+  // useEffect(async () => {
+  //   const response = axios('api/todos');
+  //   console.log(response);
+  // }, []);
 
   return (
     <div className="App">
