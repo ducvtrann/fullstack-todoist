@@ -6,27 +6,43 @@ import {
   FaRegCalendarAlt,
   FaRegCalendar,
 } from 'react-icons/fa';
-import { MdAddBox } from 'react-icons/md';
 
-export const Sidebar = () => {
+export const Sidebar = ({ activeFilterContent, setActiveFilterContent }) => {
   return (
     <div className="sidebar">
       <div className="sidebar-sticky">
         <ul className="sidebar-nav">
           <li>
-            <a className="nav-link">
+            <a
+              className={
+                activeFilterContent === 'Inbox' ? 'nav-link active' : 'nav-link'
+              }
+              onClick={() => setActiveFilterContent('Inbox')}
+            >
               <FaInbox className="nav-link-icon" />
               Inbox
             </a>
           </li>
           <li>
-            <a className="nav-link">
+            <a
+              className={
+                activeFilterContent === 'Today' ? 'nav-link active' : 'nav-link'
+              }
+              onClick={() => setActiveFilterContent('Today')}
+            >
               <FaRegCalendar className="nav-link-icon" />
               Today
             </a>
           </li>
           <li>
-            <a className="nav-link">
+            <a
+              className={
+                activeFilterContent === 'Upcoming'
+                  ? 'nav-link active'
+                  : 'nav-link'
+              }
+              onClick={() => setActiveFilterContent('Upcoming')}
+            >
               <FaRegCalendarAlt className="nav-link-icon" />
               Upcoming
             </a>

@@ -2,10 +2,10 @@ import React from 'react';
 import './Content.css';
 import { TodoList } from '../../TodoList';
 
-export const Content = () => (
+export const Content = ({ activeFilterContent }) => (
   <div className="content">
     <div className="content__board">
-      <h2 className="content__board__title">Title</h2>
+      <h2 className="content__board__title">{activeFilterContent}</h2>
       <TodoList />
     </div>
   </div>
