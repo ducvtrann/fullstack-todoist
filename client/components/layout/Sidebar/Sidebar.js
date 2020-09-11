@@ -43,8 +43,7 @@ export const Sidebar = ({ activeFilterContent, setActiveFilterContent }) => {
               }
               onClick={() => setActiveFilterContent('Upcoming')}
             >
-              <FaRegCalendarAlt className="nav-link-icon" />
-              Upcoming
+              <FaRegCalendarAlt className="nav-link-icon" />7 Days
             </a>
           </li>
         </ul>
