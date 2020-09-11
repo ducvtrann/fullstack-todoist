@@ -33,6 +33,11 @@
   padding: 0.5rem 1rem;
 }
 
+.active {
+  background-color: #db4c3f;
+  color: white;
+}
+
 .nav-link-icon {
   margin-right: 0.5rem;
 }

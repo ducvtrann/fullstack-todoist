@@ -7,6 +7,7 @@ import { Sidebar } from './layout/Sidebar/Sidebar';
 
 const App = () => {
   const [activeFilterContent, setActiveFilterContent] = useState('Inbox');
+  const [tasks, setTasks] = useState([]);
 
   return (
     <div className="App">
