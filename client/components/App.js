@@ -10,10 +10,15 @@ const App = () => {
   const [activeFilterContent, setActiveFilterContent] = useState('Inbox');
   const [tasks, setTasks] = useState([]);
 
-  // useEffect(async () => {
-  //   const response = axios('api/todos');
-  //   console.log(response);
-  // }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get('http://localhost:3000/api/todos');
+      console.log(response.data);
+      setTasks(response.data);
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div className="App">
