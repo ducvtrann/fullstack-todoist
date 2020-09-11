@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 const htmlPlugin = new HtmlWebpackPlugin({
   favicon: './public/favicon.ico',
@@ -38,7 +39,7 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     filename: 'index_bundle.js',
   },
-  plugins: [htmlPlugin],
+  plugins: [htmlPlugin, new Dotenv()],
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   devtool: 'source-map',
   watchOptions: {

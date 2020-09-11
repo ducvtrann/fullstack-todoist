@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../helpers/axios';
 import './App.css';
 import { hot } from 'react-hot-loader';
 import { Header } from './layout/Header/Header';
@@ -12,7 +12,7 @@ const App = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get('http://localhost:3000/api/todos');
+      const response = await axios.get('/todos');
       console.log(response.data);
       setTasks(response.data);
     };
