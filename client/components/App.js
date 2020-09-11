@@ -13,13 +13,11 @@ const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get('/todos');
-      console.log(response.data);
       setTasks(response.data);
     };
 
     fetchData();
   }, []);
-
   return (
     <div className="App">
       <Header />
@@ -27,7 +25,7 @@ const App = () => {
         activeFilterContent={activeFilterContent}
         setActiveFilterContent={setActiveFilterContent}
       />
-      <Content activeFilterContent={activeFilterContent} />
+      <Content activeFilterContent={activeFilterContent} tasks={tasks} />
     </div>
   );
 };
