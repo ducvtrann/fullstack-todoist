@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
+const cors = require('cors');
 
 // Constants
 const app = express();
@@ -18,6 +19,9 @@ const createApp = () => {
   // body parsing middleware
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
+
+  // CORS
+  app.use(cors());
 
   // Main route
   require('./routes')(app);
