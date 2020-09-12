@@ -4,7 +4,9 @@ module.exports = {
   async index(req, res) {
     try {
       const todos = await Todo.findAll();
-      res.status(200).send(todos);
+      const sortedTodos = todos.sort((a, b) => a.createdAt - b.createdAt);
+
+      res.status(200).send(sortedTodos);
     } catch (error) {
       res.status(400).send(error);
     }
