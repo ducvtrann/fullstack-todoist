@@ -17,7 +17,7 @@ const App = () => {
     };
 
     fetchData();
-  }, []);
+  }, [tasks.length]);
   return (
     <div className="App">
       <Header />
