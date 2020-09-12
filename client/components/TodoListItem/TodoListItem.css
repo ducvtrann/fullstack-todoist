@@ -1,4 +1,4 @@
-.todo-list-item {
+.todo__list__item {
   border-bottom: 0.1rem solid #dddddd;
   background-color: #f6f6f6;
   padding: 1rem;
@@ -7,6 +7,6 @@
   display: block;
 }
 
-.todo-list-item:hover:not(.header) {
+.todo__list__item:hover:not(.header) {
   background-color: #eeeeee;
 }
