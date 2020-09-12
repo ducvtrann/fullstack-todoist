@@ -3,16 +3,23 @@ import axios from '../../helpers/axios';
 import './TodoList.css';
 import { TodoListItem } from '../TodoListItem/TodoListItem';
 import { MdAddBox } from 'react-icons/md';
+
 export const TodoList = ({ tasks, isUpdating, setIsUpdating }) => {
   const [todo, setTodo] = useState('');
 
-  const submitData = async (e) => {
+  const addTodo = async (e) => {
     event.preventDefault();
     await axios.post('/todos', {
       content: todo,
     });
     setIsUpdating(!isUpdating);
     setTodo('');
+  };
+
+  const deleteTodo = async (todoId) => {
+    event.preventDefault();
+    await axios.delete(`/todos/${todoId}`);
+    setIsUpdating(!isUpdating);
   };
 
   const handleChange = (e) => {
@@ -23,11 +30,11 @@ export const TodoList = ({ tasks, isUpdating, setIsUpdating }) => {
     <div className="todo__list__container">
       <ul className="todo__list">
         {tasks.map((task, idx) => {
-          return <TodoListItem key={idx} task={task} />;
+          return <TodoListItem key={idx} task={task} deleteTodo={deleteTodo} />;
         })}
       </ul>
 
-      <form className="add__todo__container" onSubmit={(e) => submitData(e)}>
+      <form className="add__todo__container" onSubmit={(e) => addTodo(e)}>
         <input
           className="add__todo__input"
           type="text"
