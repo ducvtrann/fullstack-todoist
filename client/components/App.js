@@ -9,6 +9,7 @@ import { Sidebar } from './layout/Sidebar/Sidebar';
 const App = () => {
   const [activeFilterContent, setActiveFilterContent] = useState('Inbox');
   const [tasks, setTasks] = useState([]);
+  const [isUpdating, setIsUpdating] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,7 +18,7 @@ const App = () => {
     };
 
     fetchData();
-  }, [tasks.length]);
+  }, [isUpdating]);
   return (
     <div className="App">
       <Header />
@@ -25,7 +26,12 @@ const App = () => {
         activeFilterContent={activeFilterContent}
         setActiveFilterContent={setActiveFilterContent}
       />
-      <Content activeFilterContent={activeFilterContent} tasks={tasks} />
+      <Content
+        activeFilterContent={activeFilterContent}
+        tasks={tasks}
+        isUpdating={isUpdating}
+        setIsUpdating={setIsUpdating}
+      />
     </div>
   );
 };

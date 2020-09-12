@@ -3,7 +3,7 @@ import axios from '../../helpers/axios';
 import './TodoList.css';
 import { TodoListItem } from '../TodoListItem/TodoListItem';
 import { MdAddBox } from 'react-icons/md';
-export const TodoList = ({ tasks }) => {
+export const TodoList = ({ tasks, isUpdating, setIsUpdating }) => {
   const [todo, setTodo] = useState('');
 
   const submitData = async (e) => {
@@ -11,7 +11,8 @@ export const TodoList = ({ tasks }) => {
     await axios.post('/todos', {
       content: todo,
     });
-    window.location = '/';
+    setIsUpdating(!isUpdating);
+    setTodo('');
   };
 
   const handleChange = (e) => {
