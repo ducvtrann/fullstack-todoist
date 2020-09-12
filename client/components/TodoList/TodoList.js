@@ -16,6 +16,19 @@ export const TodoList = ({ tasks, isUpdating, setIsUpdating }) => {
     setTodo('');
   };
 
+  const updateTodo = async (todoId, updatedTodo) => {
+    try {
+      console.log(updatedTodo);
+      event.preventDefault();
+      await axios.patch(`/todos/${todoId}`, {
+        ...updatedTodo,
+      });
+      setIsUpdating(!isUpdating);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const deleteTodo = async (todoId) => {
     event.preventDefault();
     await axios.delete(`/todos/${todoId}`);
@@ -30,7 +43,14 @@ export const TodoList = ({ tasks, isUpdating, setIsUpdating }) => {
     <div className="todo__list__container">
       <ul className="todo__list">
         {tasks.map((task, idx) => {
-          return <TodoListItem key={idx} task={task} deleteTodo={deleteTodo} />;
+          return (
+            <TodoListItem
+              key={idx}
+              task={task}
+              deleteTodo={deleteTodo}
+              updateTodo={updateTodo}
+            />
+          );
         })}
       </ul>
 

@@ -18,6 +18,10 @@
   background-color: #eeeeee;
 }
 
+.list__item__edit {
+  width: 75%;
+}
+
 .icon__container {
   display: flex;
   justify-content: space-around;

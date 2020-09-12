@@ -29,17 +29,21 @@ module.exports = {
   async update(req, res) {
     try {
       const todo = await Todo.findByPk(req.params.todoId);
-
       if (!todo) {
+        console.log('I was here');
         throw new Error('No record found');
       }
+
       const updatedTodo = await todo.update({
-        content: req.body.content || todoItem.content,
-        complete: req.body.complete || todoItem.complete,
+        content: req.body.content || todo.content,
+        complete: req.body.complete || todo.complete,
       });
+
+      console.log('updatedTodo', updatedTodo);
 
       res.status(200).send(updatedTodo);
     } catch (error) {
+      console.log(error);
       throw new Error('Oops! Something went wrong!');
     }
   },

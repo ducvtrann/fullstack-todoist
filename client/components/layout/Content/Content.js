@@ -8,7 +8,6 @@ export const Content = ({
   isUpdating,
   setIsUpdating,
 }) => {
-  console.log(tasks);
   return (
     <div className="content">
       <div className="content__board">
