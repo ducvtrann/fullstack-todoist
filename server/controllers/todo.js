@@ -22,7 +22,8 @@ module.exports = {
   },
   async create(req, res) {
     try {
-      const todo = await Todo.create({ content: req.body.content });
+      console.log(req.body);
+      const todo = await Todo.create({ ...req.body });
       res.status(201).send(todo);
     } catch (error) {
       res.status(400).send(error);

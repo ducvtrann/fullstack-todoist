@@ -8,10 +8,14 @@ export const TodoList = ({ tasks, isUpdating, setIsUpdating }) => {
   const [todo, setTodo] = useState('');
 
   const addTodo = async (e) => {
-    event.preventDefault();
-    await axios.post('/todos', {
+    const projectId = tasks[0].projectId;
+    const newTodo = {
       content: todo,
-    });
+      projectId: projectId,
+    };
+
+    event.preventDefault();
+    await axios.post('/todos', newTodo);
     setIsUpdating(!isUpdating);
     setTodo('');
   };
