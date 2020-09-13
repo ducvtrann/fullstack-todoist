@@ -12,6 +12,9 @@ export const Sidebar = ({
   setActiveFilterContent,
   isProjectCollapse,
   setProjectCollapse,
+  projects,
+  isFilterProjectTodo,
+  setFilterProjectTodo,
 }) => {
   return (
     <div className="sidebar">
@@ -22,7 +25,12 @@ export const Sidebar = ({
               className={
                 activeFilterContent === 'Inbox' ? 'nav-link active' : 'nav-link'
               }
-              onClick={() => setActiveFilterContent('Inbox')}
+              onClick={() => {
+                if (isFilterProjectTodo) {
+                  setFilterProjectTodo(!isFilterProjectTodo);
+                }
+                setActiveFilterContent('Inbox');
+              }}
             >
               <FaInbox className="nav-link-icon" />
               Inbox
@@ -33,7 +41,12 @@ export const Sidebar = ({
               className={
                 activeFilterContent === 'Today' ? 'nav-link active' : 'nav-link'
               }
-              onClick={() => setActiveFilterContent('Today')}
+              onClick={() => {
+                if (isFilterProjectTodo) {
+                  setFilterProjectTodo(!isFilterProjectTodo);
+                }
+                setActiveFilterContent('Today');
+              }}
             >
               <FaRegCalendar className="nav-link-icon" />
               Today
@@ -46,7 +59,13 @@ export const Sidebar = ({
                   ? 'nav-link active'
                   : 'nav-link'
               }
-              onClick={() => setActiveFilterContent('Upcoming')}
+              onClick={() => {
+                if (isFilterProjectTodo) {
+                  setFilterProjectTodo(!isFilterProjectTodo);
+                }
+
+                setActiveFilterContent('Upcoming');
+              }}
             >
               <FaRegCalendarAlt className="nav-link-icon" />
               Upcoming
@@ -65,13 +84,26 @@ export const Sidebar = ({
             <a className="project__btn">+</a>
           </div>
           <div
-            class={
+            className={
               isProjectCollapse
                 ? 'project__content__hidden'
                 : 'project__content'
             }
           >
-            <p>Lorem ipsum...</p>
+            {projects.map((project, idx) => {
+              return (
+                <li key={idx}>
+                  <a
+                    onClick={() => {
+                      setFilterProjectTodo(!isFilterProjectTodo);
+                      setActiveFilterContent(project.name);
+                    }}
+                  >
+                    {project.name}
+                  </a>
+                </li>
+              );
+            })}
           </div>
         </div>
       </div>

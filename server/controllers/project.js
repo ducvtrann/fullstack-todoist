@@ -1,11 +1,13 @@
-const { Project } = require('../models');
+const { Project, Todo } = require('../models');
 
 module.exports = {
   async index(req, res) {
     try {
-      const projects = await Project.findAll();
-      const sortedProjects = projects.sort((a, b) => a.createdAt - b.createdAt);
+      const projects = await Project.findAll({
+        include: [{ model: Todo }],
+      });
 
+      const sortedProjects = projects.sort((a, b) => a.createdAt - b.createdAt);
       res.status(200).send(sortedProjects);
     } catch (error) {
       res.status(400).send(error);

@@ -10,20 +10,35 @@ import { Sidebar } from './layout/Sidebar/Sidebar';
 const App = () => {
   const [activeFilterContent, setActiveFilterContent] = useState('Inbox');
   const [tasks, setTasks] = useState([]);
+  const [projects, setProjects] = useState([]);
   const [isUpdating, setIsUpdating] = useState(false);
   const [isProjectCollapse, setProjectCollapse] = useState(true);
+  const [isFilterProjectTodo, setFilterProjectTodo] = useState(false);
+
+  const fetchTodos = async () => {
+    const response = await axios.get('/todos');
+    setTasks(response.data);
+  };
+
+  const fetchProjects = async () => {
+    const response = await axios.get('/projects');
+    setProjects(response.data);
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get('/todos');
-      setTasks(response.data);
-    };
-
-    fetchData();
+    fetchTodos();
+    fetchProjects();
   }, [isUpdating]);
 
   const filteredTodo = () => {
     return filteredGroup(activeFilterContent, tasks);
+  };
+
+  const fetchProjectTodos = () => {
+    const project = projects.find(
+      (project) => project.name === activeFilterContent
+    );
+    return project.Todos;
   };
 
   return (
@@ -33,11 +48,14 @@ const App = () => {
         activeFilterContent={activeFilterContent}
         setActiveFilterContent={setActiveFilterContent}
         isProjectCollapse={isProjectCollapse}
+        projects={projects}
         setProjectCollapse={setProjectCollapse}
+        isFilterProjectTodo={isFilterProjectTodo}
+        setFilterProjectTodo={setFilterProjectTodo}
       />
       <Content
         activeFilterContent={activeFilterContent}
-        tasks={filteredTodo()}
+        tasks={isFilterProjectTodo ? fetchProjectTodos() : filteredTodo()}
         isUpdating={isUpdating}
         setIsUpdating={setIsUpdating}
       />
