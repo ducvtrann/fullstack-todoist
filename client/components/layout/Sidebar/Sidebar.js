@@ -7,7 +7,12 @@ import {
   FaRegCalendar,
 } from 'react-icons/fa';
 
-export const Sidebar = ({ activeFilterContent, setActiveFilterContent }) => {
+export const Sidebar = ({
+  activeFilterContent,
+  setActiveFilterContent,
+  isProjectCollapse,
+  setProjectCollapse,
+}) => {
   return (
     <div className="sidebar">
       <div className="sidebar-sticky">
@@ -48,12 +53,26 @@ export const Sidebar = ({ activeFilterContent, setActiveFilterContent }) => {
             </a>
           </li>
         </ul>
-        <div className="sidebar-project">
-          <a className="nav-link">
-            <FaChevronDown className="nav-link-icon" />
-            Projects
-          </a>
-          <a>+</a>
+        <div className="sidebar__project">
+          <div className="sidebar_project__btn__container">
+            <a
+              className="nav-link project__btn"
+              onClick={() => setProjectCollapse(!isProjectCollapse)}
+            >
+              <FaChevronDown className="nav-link-icon" />
+              Projects
+            </a>
+            <a className="project__btn">+</a>
+          </div>
+          <div
+            class={
+              isProjectCollapse
+                ? 'project__content__hidden'
+                : 'project__content'
+            }
+          >
+            <p>Lorem ipsum...</p>
+          </div>
         </div>
       </div>
     </div>

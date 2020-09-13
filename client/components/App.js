@@ -11,6 +11,7 @@ const App = () => {
   const [activeFilterContent, setActiveFilterContent] = useState('Inbox');
   const [tasks, setTasks] = useState([]);
   const [isUpdating, setIsUpdating] = useState(false);
+  const [isProjectCollapse, setProjectCollapse] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,6 +32,8 @@ const App = () => {
       <Sidebar
         activeFilterContent={activeFilterContent}
         setActiveFilterContent={setActiveFilterContent}
+        isProjectCollapse={isProjectCollapse}
+        setProjectCollapse={setProjectCollapse}
       />
       <Content
         activeFilterContent={activeFilterContent}

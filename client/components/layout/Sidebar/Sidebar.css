@@ -5,6 +5,7 @@
   left: 0;
   z-index: 100;
   padding: 4rem 2rem;
+
   background-color: #f1f1f1;
 }
 
@@ -43,8 +44,33 @@
   margin-right: 0.5rem;
 }
 
-.sidebar-project {
+.sidebar__project {
   padding-top: 1.5rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
+}
+
+.sidebar_project__btn__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.project__btn {
+  cursor: pointer;
+}
+
+.project__content {
+  padding: 0 18px;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+.project__content__hidden {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
 }
