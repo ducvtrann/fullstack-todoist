@@ -18,7 +18,6 @@ export const TodoList = ({ tasks, isUpdating, setIsUpdating }) => {
 
   const updateTodo = async (todoId, updatedTodo) => {
     try {
-      console.log(updatedTodo);
       event.preventDefault();
       await axios.patch(`/todos/${todoId}`, {
         ...updatedTodo,

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { filteredGroup } from '../helpers';
 import axios from '../helpers/axios';
 import './App.css';
 import { hot } from 'react-hot-loader';
@@ -19,6 +20,11 @@ const App = () => {
 
     fetchData();
   }, [isUpdating]);
+
+  const filteredTodo = () => {
+    return filteredGroup(activeFilterContent, tasks);
+  };
+
   return (
     <div className="App">
       <Header />
@@ -28,7 +34,7 @@ const App = () => {
       />
       <Content
         activeFilterContent={activeFilterContent}
-        tasks={tasks}
+        tasks={filteredTodo()}
         isUpdating={isUpdating}
         setIsUpdating={setIsUpdating}
       />
