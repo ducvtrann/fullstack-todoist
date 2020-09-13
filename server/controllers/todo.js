@@ -41,8 +41,6 @@ module.exports = {
         complete: req.body.complete || todo.complete,
       });
 
-      console.log('updatedTodo', updatedTodo);
-
       res.status(200).send(updatedTodo);
     } catch (error) {
       console.log(error);
