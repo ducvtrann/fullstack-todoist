@@ -1,4 +1,4 @@
-const { Todo } = require('../models');
+const { Todo, Project } = require('../models');
 
 module.exports = {
   async index(req, res) {
@@ -22,8 +22,22 @@ module.exports = {
   },
   async create(req, res) {
     try {
-      console.log(req.body);
-      const todo = await Todo.create({ ...req.body });
+      const project = await Project.findOne({
+        where: { name: req.body.projectName },
+      });
+
+      let todo;
+      if (project !== null) {
+        todo = await Todo.create({
+          content: req.body.content,
+          projectId: project.id,
+        });
+      } else {
+        const todo = await Todo.create({
+          content: req.body.content,
+        });
+      }
+
       res.status(201).send(todo);
     } catch (error) {
       res.status(400).send(error);

@@ -4,14 +4,13 @@ import { TodoListItem } from '../TodoListItem/TodoListItem';
 import { MdAddBox } from 'react-icons/md';
 import './TodoList.css';
 
-export const TodoList = ({ tasks, fetchData }) => {
+export const TodoList = ({ tasks, activeFilterContent, fetchData }) => {
   const [todo, setTodo] = useState('');
 
   const addTodo = async (e) => {
-    const projectId = tasks[0].projectId;
     const newTodo = {
       content: todo,
-      projectId: projectId,
+      projectName: activeFilterContent,
     };
 
     event.preventDefault();
