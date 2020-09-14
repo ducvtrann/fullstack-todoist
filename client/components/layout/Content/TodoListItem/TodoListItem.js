@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
 import './TodoListItem.css';
-import { FaPencilAlt, FaTrashAlt, FaPen } from 'react-icons/fa';
 
 export const TodoListItem = ({ task, deleteTodo, updateTodo }) => {
   const [editedTodo, setEditedTodo] = useState({});

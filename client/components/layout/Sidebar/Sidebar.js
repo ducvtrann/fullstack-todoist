@@ -1,21 +1,32 @@
-import React from 'react';
-import './Sidebar.css';
+import React, { useState } from 'react';
+import axios from '../../../helpers/axios';
 import {
   FaChevronDown,
   FaInbox,
   FaRegCalendarAlt,
   FaRegCalendar,
 } from 'react-icons/fa';
+import './Sidebar.css';
 
 export const Sidebar = ({
   activeFilterContent,
   setActiveFilterContent,
-  isProjectCollapse,
-  setProjectCollapse,
   projects,
-  isFilterProjectTodo,
-  setFilterProjectTodo,
 }) => {
+  const [projectName, setProjectName] = useState('');
+  const [isProjectCollapse, setProjectCollapse] = useState(true);
+  const [showNewProject, setShowNewProject] = useState(false);
+
+  const handleChange = (e) => {
+    setProjectName(e.target.value);
+  };
+  const addProject = async (e) => {
+    e.preventDefault();
+    await axios.post('/projects', { name: projectName });
+
+    setProjectName('');
+    setShowNewProject(!showNewProject);
+  };
   return (
     <div className="sidebar">
       <div className="sidebar-sticky">
@@ -81,7 +92,12 @@ export const Sidebar = ({
               <FaChevronDown className="nav-link-icon" />
               Projects
             </a>
-            <a className="project__btn">+</a>
+            <a
+              className="project__btn"
+              onClick={() => setShowNewProject(!showNewProject)}
+            >
+              +
+            </a>
           </div>
           <div
             className={
@@ -95,7 +111,6 @@ export const Sidebar = ({
                 <li key={idx}>
                   <a
                     onClick={() => {
-                      setFilterProjectTodo(!isFilterProjectTodo);
                       setActiveFilterContent(project.name);
                     }}
                   >
@@ -104,6 +119,16 @@ export const Sidebar = ({
                 </li>
               );
             })}
+          </div>
+          <div className={showNewProject ? null : 'new_project'}>
+            <form onSubmit={(e) => addProject(e)}>
+              <input
+                type="text"
+                placeholder="Add project"
+                value={projectName}
+                onChange={(e) => handleChange(e)}
+              ></input>
+            </form>
           </div>
         </div>
       </div>

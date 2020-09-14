@@ -1,45 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import { filteredGroup } from '../helpers';
 import axios from '../helpers/axios';
-import './App.css';
 import { hot } from 'react-hot-loader';
 import { Header } from './layout/Header/Header';
 import { Content } from './layout/Content/Content';
 import { Sidebar } from './layout/Sidebar/Sidebar';
+import { categorizesTodos, getProjectList, projectTodos } from '../helpers';
+import './App.css';
 
 const App = () => {
   const [activeFilterContent, setActiveFilterContent] = useState('Inbox');
-  const [tasks, setTasks] = useState([]);
-  const [projects, setProjects] = useState([]);
-  const [isUpdating, setIsUpdating] = useState(false);
-  const [isProjectCollapse, setProjectCollapse] = useState(true);
-  const [isFilterProjectTodo, setFilterProjectTodo] = useState(false);
+  const [tasks, setTasks] = useState({ Inbox: [], Today: [], Upcoming: [] });
 
-  const fetchTodos = async () => {
-    const response = await axios.get('/todos');
-    setTasks(response.data);
-  };
+  const fetchData = async () => {
+    const todo = await axios.get('/todos');
+    const categorizedTodos = categorizesTodos(todo.data);
 
-  const fetchProjects = async () => {
-    const response = await axios.get('/projects');
-    setProjects(response.data);
+    const project = await axios.get('/projects');
+    const additionalProjectsTodos = projectTodos(project.data);
+    setTasks({ ...categorizedTodos, ...additionalProjectsTodos });
   };
 
   useEffect(() => {
-    fetchTodos();
-    fetchProjects();
-  }, [isUpdating]);
-
-  const filteredTodo = () => {
-    return filteredGroup(activeFilterContent, tasks);
-  };
-
-  const fetchProjectTodos = () => {
-    const project = projects.find(
-      (project) => project.name === activeFilterContent
-    );
-    return project.Todos;
-  };
+    fetchData();
+  }, []);
 
   return (
     <div className="App">
@@ -47,17 +30,11 @@ const App = () => {
       <Sidebar
         activeFilterContent={activeFilterContent}
         setActiveFilterContent={setActiveFilterContent}
-        isProjectCollapse={isProjectCollapse}
-        setProjectCollapse={setProjectCollapse}
-        isFilterProjectTodo={isFilterProjectTodo}
-        setFilterProjectTodo={setFilterProjectTodo}
-        projects={projects}
+        projects={getProjectList(Object.keys(tasks))}
       />
       <Content
         activeFilterContent={activeFilterContent}
-        tasks={isFilterProjectTodo ? fetchProjectTodos() : filteredTodo()}
-        isUpdating={isUpdating}
-        setIsUpdating={setIsUpdating}
+        tasks={tasks[activeFilterContent]}
       />
     </div>
   );
