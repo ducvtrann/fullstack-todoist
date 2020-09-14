@@ -8,7 +8,7 @@ export const Sidebar = ({
   activeFilterContent,
   setActiveFilterContent,
   projects,
-  setIsUpdating,
+  fetchData,
 }) => {
   const defaultCategories = ['Inbox', 'Today', 'Upcoming'];
   const icons = [FaInbox, FaRegCalendarAlt, FaRegCalendar];
@@ -33,7 +33,7 @@ export const Sidebar = ({
           projects={projects}
           activeFilterContent={activeFilterContent}
           setActiveFilterContent={setActiveFilterContent}
-          setIsUpdating={setIsUpdating}
+          fetchData={fetchData}
         />
       </div>
     </div>

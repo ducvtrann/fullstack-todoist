@@ -10,7 +10,6 @@ import './App.css';
 const App = () => {
   const [activeFilterContent, setActiveFilterContent] = useState('Inbox');
   const [tasks, setTasks] = useState({ Inbox: [], Today: [], Upcoming: [] });
-  const [isUpdating, setIsUpdating] = useState(false);
 
   const fetchData = async () => {
     const todo = await axios.get('/todos');
@@ -22,11 +21,8 @@ const App = () => {
   };
 
   useEffect(() => {
-    if (isUpdating) {
-      setIsUpdating(false);
-    }
     fetchData();
-  }, [isUpdating]);
+  }, []);
 
   return (
     <div className="App">
@@ -35,12 +31,12 @@ const App = () => {
         activeFilterContent={activeFilterContent}
         setActiveFilterContent={setActiveFilterContent}
         projects={getProjectList(Object.keys(tasks))}
-        setIsUpdating={setIsUpdating}
+        fetchData={fetchData}
       />
       <Content
         activeFilterContent={activeFilterContent}
         tasks={tasks[activeFilterContent]}
-        setIsUpdating={setIsUpdating}
+        fetchData={fetchData}
       />
     </div>
   );

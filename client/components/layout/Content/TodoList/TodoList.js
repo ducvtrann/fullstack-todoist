@@ -4,7 +4,7 @@ import { TodoListItem } from '../TodoListItem/TodoListItem';
 import { MdAddBox } from 'react-icons/md';
 import './TodoList.css';
 
-export const TodoList = ({ tasks, setIsUpdating }) => {
+export const TodoList = ({ tasks, fetchData }) => {
   const [todo, setTodo] = useState('');
 
   const addTodo = async (e) => {
@@ -16,7 +16,7 @@ export const TodoList = ({ tasks, setIsUpdating }) => {
 
     event.preventDefault();
     await axios.post('/todos', newTodo);
-    setIsUpdating(true);
+    fetchData();
     setTodo('');
   };
 
@@ -26,7 +26,7 @@ export const TodoList = ({ tasks, setIsUpdating }) => {
       await axios.patch(`/todos/${todoId}`, {
         ...updatedTodo,
       });
-      setIsUpdating(true);
+      fetchData();
     } catch (error) {
       console.log(error);
     }
@@ -35,7 +35,7 @@ export const TodoList = ({ tasks, setIsUpdating }) => {
   const deleteTodo = async (todoId) => {
     event.preventDefault();
     await axios.delete(`/todos/${todoId}`);
-    setIsUpdating(true);
+    fetchData();
   };
 
   const handleChange = (e) => {

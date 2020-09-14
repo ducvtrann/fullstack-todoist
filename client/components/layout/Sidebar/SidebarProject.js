@@ -5,7 +5,7 @@ import { FaChevronDown } from 'react-icons/fa';
 export const SidebarProject = ({
   projects,
   setActiveFilterContent,
-  setIsUpdating,
+  fetchData,
 }) => {
   const [projectName, setProjectName] = useState('');
   const [isProjectCollapse, setProjectCollapse] = useState(true);
@@ -17,7 +17,7 @@ export const SidebarProject = ({
   const addProject = async (e) => {
     e.preventDefault();
     await axios.post('/projects', { name: projectName });
-    setIsUpdating(true);
+    fetchData();
     setProjectName('');
     setProjectCollapse(false);
     setShowNewProject(false);
