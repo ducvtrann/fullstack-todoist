@@ -5,10 +5,10 @@ module.exports = {
     try {
       const todos = await Todo.findAll({
         where: { projectId: null },
+        order: [['createdAt', 'ASC']],
       });
-      const sortedTodos = todos.sort((a, b) => a.createdAt - b.createdAt);
 
-      res.status(200).send(sortedTodos);
+      res.status(200).send(todos);
     } catch (error) {
       res.status(400).send(error);
     }
