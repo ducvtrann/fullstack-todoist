@@ -4,6 +4,7 @@ import { FaChevronDown } from 'react-icons/fa';
 
 export const SidebarProject = ({
   projects,
+  activeFilterContent,
   setActiveFilterContent,
   fetchData,
 }) => {
@@ -49,6 +50,9 @@ export const SidebarProject = ({
           return (
             <li key={idx}>
               <a
+                className={
+                  activeFilterContent === name ? 'nav_link  active' : 'nav_link'
+                }
                 onClick={() => {
                   setActiveFilterContent(project);
                 }}
@@ -62,6 +66,7 @@ export const SidebarProject = ({
       <div className={showNewProject ? null : 'new_project'}>
         <form onSubmit={(e) => addProject(e)}>
           <input
+            className="add_project_input"
             type="text"
             placeholder="Add project"
             value={projectName}

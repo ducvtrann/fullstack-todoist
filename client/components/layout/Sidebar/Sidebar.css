@@ -33,6 +33,7 @@
   align-items: center;
   padding: 0.5rem 1rem;
   width: 8.75rem;
+  cursor: pointer;
 }
 
 .active {
@@ -77,4 +78,14 @@
 
 .new_project {
   display: none;
+}
+
+.add_project_input {
+  background-color: #f6f6f6;
+  text-decoration: none;
+  width: 10rem;
+  padding: 0.5rem;
+}
+
+.project_item {
 }
