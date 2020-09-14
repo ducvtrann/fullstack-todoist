@@ -3,7 +3,9 @@ const { Todo, Project } = require('../models');
 module.exports = {
   async index(req, res) {
     try {
-      const todos = await Todo.findAll();
+      const todos = await Todo.findAll({
+        where: { projectId: null },
+      });
       const sortedTodos = todos.sort((a, b) => a.createdAt - b.createdAt);
 
       res.status(200).send(sortedTodos);

@@ -8,13 +8,13 @@ export const TodoList = ({ tasks, activeFilterContent, fetchData }) => {
   const [todo, setTodo] = useState('');
 
   const addTodo = async (e) => {
-    const newTodo = {
+    const body = {
       content: todo,
       projectName: activeFilterContent,
     };
 
     event.preventDefault();
-    await axios.post('/todos', newTodo);
+    await axios.post('/todos', body);
     fetchData();
     setTodo('');
   };
