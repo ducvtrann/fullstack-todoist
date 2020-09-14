@@ -4,7 +4,7 @@ import { TodoListItem } from '../TodoListItem/TodoListItem';
 import { MdAddBox } from 'react-icons/md';
 import './TodoList.css';
 
-export const TodoList = ({ tasks }) => {
+export const TodoList = ({ tasks, setIsUpdating }) => {
   const [todo, setTodo] = useState('');
 
   const addTodo = async (e) => {
@@ -16,6 +16,7 @@ export const TodoList = ({ tasks }) => {
 
     event.preventDefault();
     await axios.post('/todos', newTodo);
+    setIsUpdating(true);
     setTodo('');
   };
 
@@ -25,6 +26,7 @@ export const TodoList = ({ tasks }) => {
       await axios.patch(`/todos/${todoId}`, {
         ...updatedTodo,
       });
+      setIsUpdating(true);
     } catch (error) {
       console.log(error);
     }
@@ -33,14 +35,16 @@ export const TodoList = ({ tasks }) => {
   const deleteTodo = async (todoId) => {
     event.preventDefault();
     await axios.delete(`/todos/${todoId}`);
+    setIsUpdating(true);
   };
+
   const handleChange = (e) => {
     setTodo(e.target.value);
   };
 
   return (
-    <div className="todo__list__container">
-      <ul className="todo__list">
+    <div className="todo_list_container">
+      <ul className="todo_list">
         {tasks.map((task, idx) => {
           return (
             <TodoListItem
@@ -53,16 +57,16 @@ export const TodoList = ({ tasks }) => {
         })}
       </ul>
 
-      <form className="add__todo__container" onSubmit={(e) => addTodo(e)}>
+      <form className="add_todo_container" onSubmit={(e) => addTodo(e)}>
         <input
-          className="add__todo__input"
+          className="add_todo_input"
           type="text"
           placeholder="Add task"
           value={todo}
           onChange={(e) => handleChange(e)}
         ></input>
-        <button className="add__todo__btn" type="submit">
-          <MdAddBox className="add__todo__icon" />
+        <button className="add_todo_btn" type="submit">
+          <MdAddBox className="add_todo_icon" />
         </button>
       </form>
     </div>

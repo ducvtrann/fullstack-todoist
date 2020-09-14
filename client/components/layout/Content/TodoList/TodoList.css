@@ -1,9 +1,9 @@
-.todo__list {
+.todo_list {
   margin: 0;
   padding: 0;
 }
 
-.add__todo__container {
+.add_todo_container {
   width: 100%;
   margin: 2rem 1rem;
   display: flex;
@@ -11,7 +11,7 @@
   align-items: center;
 }
 
-.add__todo__input {
+.add_todo_input {
   background-color: #f6f6f6;
   text-decoration: none;
   font-size: 1.2rem;
@@ -19,7 +19,7 @@
   width: 85%;
 }
 
-.add__todo__btn {
+.add_todo_btn {
   background-color: #fafafa;
   color: #db4c3f;
   border: none;
@@ -28,7 +28,7 @@
   cursor: pointer;
 }
 
-.add__todo__icon {
+.add_todo_icon {
   width: 6rem;
   height: 3rem;
 }

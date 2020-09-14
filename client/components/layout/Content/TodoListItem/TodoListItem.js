@@ -32,11 +32,11 @@ export const TodoListItem = ({ task, deleteTodo, updateTodo }) => {
 
   return (
     <li>
-      <a className=" list__item__container">
-        <div className="todo__list__item">
+      <a className=" list_item_container">
+        <div className="todo_list_item">
           {isEditing ? (
             <input
-              className="list__item__edit"
+              className="list_item_edit"
               name="content"
               value={editedTodo.content}
               onChange={(e) => handleUpdatingChange(e)}
@@ -45,17 +45,17 @@ export const TodoListItem = ({ task, deleteTodo, updateTodo }) => {
             <p>{task.content}</p>
           )}
 
-          <div className="icon__container">
+          <div className="icon_container">
             <button
               type="button"
-              className="item__icon"
+              className="item_icon"
               onClick={() => handleEditingState()}
             >
               <FaPencilAlt />
             </button>
             <button
               type="button"
-              className="item__icon"
+              className="item_icon"
               onClick={() => deleteTodo(task.id)}
             >
               <FaTrashAlt />

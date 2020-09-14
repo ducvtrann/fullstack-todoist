@@ -1,11 +1,11 @@
-.list__item__container {
+.list_item_container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   display: block;
 }
 
-.todo__list__item {
+.todo_list_item {
   border-bottom: 0.1rem solid #dddddd;
   background-color: #f6f6f6;
   padding: 0.5rem;
@@ -14,21 +14,21 @@
   justify-content: space-between;
 }
 
-.todo__list__item:hover {
+.todo_list_item:hover {
   background-color: #eeeeee;
 }
 
-.list__item__edit {
+.list_item_edit {
   width: 75%;
 }
 
-.icon__container {
+.icon_container {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
-.item__icon {
+.item_icon {
   margin-right: 1rem;
   padding: 0.3rem;
   cursor: pointer;

@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import axios from '../../../helpers/axios';
 import { FaChevronDown } from 'react-icons/fa';
 
-export const SidebarProject = ({ projects, setActiveFilterContent }) => {
+export const SidebarProject = ({
+  projects,
+  setActiveFilterContent,
+  setIsUpdating,
+}) => {
   const [projectName, setProjectName] = useState('');
   const [isProjectCollapse, setProjectCollapse] = useState(true);
   const [showNewProject, setShowNewProject] = useState(false);
@@ -13,6 +17,7 @@ export const SidebarProject = ({ projects, setActiveFilterContent }) => {
   const addProject = async (e) => {
     e.preventDefault();
     await axios.post('/projects', { name: projectName });
+    setIsUpdating(true);
     setProjectName('');
     setProjectCollapse(false);
     setShowNewProject(false);
