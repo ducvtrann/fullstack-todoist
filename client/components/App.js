@@ -48,10 +48,10 @@ const App = () => {
         activeFilterContent={activeFilterContent}
         setActiveFilterContent={setActiveFilterContent}
         isProjectCollapse={isProjectCollapse}
-        projects={projects}
         setProjectCollapse={setProjectCollapse}
         isFilterProjectTodo={isFilterProjectTodo}
         setFilterProjectTodo={setFilterProjectTodo}
+        projects={projects}
       />
       <Content
         activeFilterContent={activeFilterContent}

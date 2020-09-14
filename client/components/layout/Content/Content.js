@@ -1,6 +1,6 @@
 import React from 'react';
 import './Content.css';
-import { TodoList } from '../../TodoList/TodoList';
+import { TodoList } from './TodoList/TodoList';
 
 export const Content = ({
   activeFilterContent,
