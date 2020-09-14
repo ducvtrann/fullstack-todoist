@@ -36,7 +36,7 @@ const isToday = (checkDate) => {
 
 export const isProject = (name) => {
   const defaultCategories = ['Inbox', 'Today', 'Upcoming'];
-  return defaultCategories.includes(name);
+  return !defaultCategories.includes(name);
 };
 
 export const getProjectList = (array) => {
