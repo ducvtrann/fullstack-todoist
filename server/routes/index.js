@@ -11,8 +11,8 @@ module.exports = (app) => {
 
   // PROJECT
   app.get('/api/projects', ProjectController.index);
-  app.get('/api/projects/:projectId', ProjectController.show);
+  app.get('/api/projects/:name', ProjectController.show);
   app.post('/api/projects', ProjectController.create);
-  app.patch('/api/projects/:projectId', ProjectController.update);
-  app.delete('/api/projects/:projectId', ProjectController.destroy);
+  app.patch('/api/projects/:name', ProjectController.update);
+  app.delete('/api/projects/:name', ProjectController.destroy);
 };
