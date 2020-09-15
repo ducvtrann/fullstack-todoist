@@ -63,8 +63,7 @@
 }
 
 .add_project_2 {
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin-left: 0.5rem;
   margin-top: 1rem;
   background-color: #db4c3f;
   color: #fafafa;
@@ -99,20 +98,3 @@
   margin-top: 1rem;
   padding: 0.5rem;
 }
-
-/* .icon_container {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-} */
-
-/* .project_action_item {
-  display: flex;
-  justify-content: space-between;
-} */
-
-/* .item_icon {
-  margin-right: 1rem;
-  padding: 0.3rem;
-  cursor: pointer;
-} */
