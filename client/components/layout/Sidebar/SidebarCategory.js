@@ -1,10 +1,13 @@
 import React from 'react';
+import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
 
 export const SidebarCategory = ({
   name,
   activeFilterContent,
   setActiveFilterContent,
   icon,
+  updateProject,
+  deleteProject,
 }) => {
   return (
     <li>
@@ -16,8 +19,18 @@ export const SidebarCategory = ({
           setActiveFilterContent(name);
         }}
       >
-        <span className="nav_link_icon">{icon()}</span>
-        <span>{name}</span>
+        {icon && <div className="nav_link_icon">{icon()} </div>}
+        <div>{name}</div>
+        {deleteProject && (
+          <div className="project_action_item">
+            <button onClick={(e) => deleteProject(e, name)}>
+              <FaTrashAlt />
+            </button>
+            <button onClick={(e) => updateProject(e, name)}>
+              <FaPencilAlt />
+            </button>
+          </div>
+        )}
       </div>
     </li>
   );

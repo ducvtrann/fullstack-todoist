@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from '../../../helpers/axios';
 import { FaChevronDown } from 'react-icons/fa';
+import { SidebarCategory } from './SidebarCategory';
 
 export const SidebarProject = ({
   projects,
@@ -22,6 +23,21 @@ export const SidebarProject = ({
     setProjectName('');
     setProjectCollapse(false);
     setShowNewProject(false);
+  };
+
+  const updateProject = async (e) => {
+    console.log(projectName);
+    e.preventDefault();
+    await axios.patch(`/projects/${name}`, { name: projectName });
+    fetchData();
+  };
+
+  const deleteProject = async (e, name) => {
+    console.log(name);
+    e.preventDefault();
+    await axios.delete(`/projects/${name}`, { name: 'John' });
+    setActiveFilterContent('Inbox');
+    fetchData();
   };
 
   return (
@@ -46,22 +62,16 @@ export const SidebarProject = ({
           isProjectCollapse ? 'project_content_hidden' : 'project_content'
         }
       >
-        {projects.map((project, idx) => {
-          return (
-            <li key={idx}>
-              <a
-                className={
-                  activeFilterContent === name ? 'nav_link  active' : 'nav_link'
-                }
-                onClick={() => {
-                  setActiveFilterContent(project);
-                }}
-              >
-                {project}
-              </a>
-            </li>
-          );
-        })}
+        {projects.map((project, idx) => (
+          <SidebarCategory
+            key={idx}
+            name={project}
+            activeFilterContent={activeFilterContent}
+            setActiveFilterContent={setActiveFilterContent}
+            updateProject={updateProject}
+            deleteProject={deleteProject}
+          />
+        ))}
       </div>
       <div className={showNewProject ? null : 'new_project'}>
         <form onSubmit={(e) => addProject(e)}>
