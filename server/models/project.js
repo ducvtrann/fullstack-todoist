@@ -14,6 +14,8 @@ module.exports = (sequelize, DataTypes) => {
           name: 'projectId',
           allowNull: true,
         },
+        onDelete: 'CASCADE',
+        hooks: true,
       });
     }
   }
