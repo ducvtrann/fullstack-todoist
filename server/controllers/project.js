@@ -37,7 +37,6 @@ module.exports = {
   async update(req, res) {
     try {
       const project = await Project.findByPk(req.params.projectId);
-      console.log(project);
       if (!project) {
         throw new Error('No record found');
       }
@@ -54,7 +53,9 @@ module.exports = {
   },
   async destroy(req, res) {
     try {
-      const project = await Project.findByPk(req.params.projectId);
+      const project = await Project.findOne({
+        where: { name: req.params.name },
+      });
 
       if (!project) {
         throw new Error('No record found');
