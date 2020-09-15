@@ -19,14 +19,22 @@ export const SidebarCategory = ({
           setActiveFilterContent(name);
         }}
       >
-        {icon && <div className="nav_link_icon">{icon()} </div>}
-        <div>{name}</div>
+        <div className="d_flex">
+          {icon && <div className="nav_link_icon">{icon()} </div>}
+          <div>{name}</div>
+        </div>
         {deleteProject && (
-          <div className="project_action_item">
-            <button onClick={(e) => deleteProject(e, name)}>
+          <div className="icon_container">
+            <button
+              className="item_icon"
+              onClick={(e) => deleteProject(e, name)}
+            >
               <FaTrashAlt />
             </button>
-            <button onClick={(e) => updateProject(e, name)}>
+            <button
+              className="item_icon"
+              onClick={(e) => updateProject(e, name)}
+            >
               <FaPencilAlt />
             </button>
           </div>

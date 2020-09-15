@@ -52,6 +52,7 @@ module.exports = {
     }
   },
   async destroy(req, res) {
+    console.log(req.body.name);
     try {
       const project = await Project.findOne({
         where: { name: req.params.name },

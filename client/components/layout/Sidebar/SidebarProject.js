@@ -33,25 +33,21 @@ export const SidebarProject = ({
   };
 
   const deleteProject = async (e, name) => {
-    console.log(name);
     e.preventDefault();
-    await axios.delete(`/projects/${name}`, { name: 'John' });
+    await axios.delete(`/projects/${name}`);
     setActiveFilterContent('Inbox');
     fetchData();
   };
 
   return (
     <div className="sidebar_project">
-      <div className="sidebar_project_btn_container">
-        <div
-          className="nav_link project_btn"
-          onClick={() => setProjectCollapse(!isProjectCollapse)}
-        >
+      <div className="d_flex project_title">
+        <div onClick={() => setProjectCollapse(!isProjectCollapse)}>
           <FaChevronDown className="nav_link_icon" />
-          Projects
         </div>
+        <div>Projects</div>
         <div
-          className="project_btn"
+          className="add_project"
           onClick={() => setShowNewProject(!showNewProject)}
         >
           +
@@ -74,7 +70,7 @@ export const SidebarProject = ({
         ))}
       </div>
       <div className={showNewProject ? null : 'new_project'}>
-        <form onSubmit={(e) => addProject(e)}>
+        <form className="add_project_form" onSubmit={(e) => addProject(e)}>
           <input
             className="add_project_input"
             type="text"
@@ -82,6 +78,7 @@ export const SidebarProject = ({
             value={projectName}
             onChange={(e) => handleChange(e)}
           ></input>
+          <button className="add_project_2">+</button>
         </form>
       </div>
     </div>

@@ -33,7 +33,7 @@ export const TodoList = ({ tasks, activeFilterContent, fetchData }) => {
 
   const deleteTodo = async (todoId) => {
     event.preventDefault();
-    await axios.delete(`/todos/${todoId}`);
+    await axios.delete(`/todos/${todoId}`, { name: 'John' });
     fetchData();
   };
 

@@ -65,6 +65,7 @@ module.exports = {
     }
   },
   async destroy(req, res) {
+    console.log(req.body.name);
     try {
       const todo = await Todo.findByPk(req.params.todoId);
 
